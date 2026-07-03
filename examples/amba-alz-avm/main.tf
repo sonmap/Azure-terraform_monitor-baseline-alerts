@@ -65,7 +65,7 @@ module "amba_policy" {
     amba_alz_disable_tag_name                    = jsonencode({ value = var.amba_disable_tag_name })
     amba_alz_disable_tag_values                  = jsonencode({ value = var.amba_disable_tag_values })
     amba_alz_action_group_email                  = jsonencode({ value = var.action_group_email })
-    amba_alz_sha_action_group_resources = jsonencode({
+    amba_alz_sha_action_group_resources          = jsonencode({
       value = {
         actionGroupEmail = var.action_group_email
       }
