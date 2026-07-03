@@ -176,15 +176,15 @@ resource "azurerm_monitor_metric_alert" "disk_consumed_percent" {
 resource "azurerm_monitor_scheduled_query_rules_alert_v2" "vm_insights" {
   for_each = local.active_vm_insights_log_alerts
 
-  name                  = "${local.alert_prefix}-${each.value.name}-${each.value.threshold}"
-  resource_group_name   = var.alert_resource_group_name
-  location              = var.location
-  scopes                = [var.log_analytics_workspace_id]
-  description           = each.value.description
-  severity              = var.severity
-  enabled               = true
-  evaluation_frequency  = var.log_evaluation_frequency
-  window_duration       = var.log_window_duration
+  name                    = "${local.alert_prefix}-${each.value.name}-${each.value.threshold}"
+  resource_group_name     = var.alert_resource_group_name
+  location                = var.location
+  scopes                  = [var.log_analytics_workspace_id]
+  description             = each.value.description
+  severity                = var.severity
+  enabled                 = true
+  evaluation_frequency    = var.log_evaluation_frequency
+  window_duration         = var.log_window_duration
   auto_mitigation_enabled = var.auto_mitigate
 
   criteria {
