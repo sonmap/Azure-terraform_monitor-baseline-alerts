@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="820" viewBox="0 0 1280 820" role="img" aria-labelledby="title desc">
+  <title id="title">Azure Terraform Monitor Baseline Alerts Architecture</title>
+  <desc id="desc">Terraform repository architecture for single VM baseline alerts and AMBA ALZ policy deployment.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#4b5563" />
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.18"/>
+    </filter>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 30px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 500 15px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .section-title { font: 700 18px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .box-title { font: 700 16px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .box-text { font: 500 13px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .small { font: 500 12px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .code { font: 600 12px 'Consolas', 'Courier New', monospace; fill: #1e293b; }
+      .repo { fill: #eef2ff; stroke: #6366f1; stroke-width: 2; rx: 16; filter: url(#shadow); }
+      .tf { fill: #f3e8ff; stroke: #8b5cf6; stroke-width: 2; rx: 16; filter: url(#shadow); }
+      .azure { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; rx: 16; filter: url(#shadow); }
+      .monitor { fill: #dcfce7; stroke: #16a34a; stroke-width: 2; rx: 16; filter: url(#shadow); }
+      .log { fill: #fff7ed; stroke: #f97316; stroke-width: 2; rx: 16; filter: url(#shadow); }
+      .policy { fill: #fef9c3; stroke: #ca8a04; stroke-width: 2; rx: 16; filter: url(#shadow); }
+      .arrow { stroke: #4b5563; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+      .dash { stroke-dasharray: 7 6; }
+      .lane { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 20; }
+      .pill { fill: #ffffff; stroke: #94a3b8; stroke-width: 1.2; rx: 14; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1280" height="820"/>
+  <text class="title" x="40" y="52">Azure Terraform Monitor Baseline Alerts</text>
+  <text class="subtitle" x="40" y="78">Single VM metric/log alerts + AMBA ALZ policy pattern deployment</text>
+
+  <rect class="lane" x="30" y="110" width="1220" height="325"/>
+  <text class="section-title" x="55" y="142">1. Single VM Baseline Alerts</text>
+
+  <rect class="repo" x="60" y="175" width="230" height="150"/>
+  <text class="box-title" x="85" y="210">GitHub Repository</text>
+  <text class="code" x="85" y="236">sonmap/Azure-terraform_</text>
+  <text class="code" x="85" y="254">monitor-baseline-alerts</text>
+  <text class="box-text" x="85" y="284">main.tf / variables.tf</text>
+  <text class="box-text" x="85" y="304">terraform.tfvars.example</text>
+
+  <rect class="tf" x="350" y="165" width="260" height="170"/>
+  <text class="box-title" x="375" y="200">Terraform Module</text>
+  <text class="code" x="375" y="225">modules/vm-baseline-alerts</text>
+  <text class="box-text" x="375" y="254">azurerm_monitor_metric_alert</text>
+  <text class="box-text" x="375" y="276">azurerm_monitor_scheduled_</text>
+  <text class="box-text" x="375" y="294">query_rules_alert_v2</text>
+
+  <rect class="azure" x="695" y="145" width="240" height="220"/>
+  <text class="box-title" x="720" y="180">Target Azure VM</text>
+  <text class="box-text" x="720" y="207">Microsoft.Compute/</text>
+  <text class="box-text" x="720" y="225">virtualMachines</text>
+  <rect class="pill" x="720" y="250" width="190" height="30"/>
+  <text class="small" x="735" y="270">CPU / Memory / Disk</text>
+  <rect class="pill" x="720" y="292" width="190" height="30"/>
+  <text class="small" x="735" y="312">Optional AMA / VM Insights</text>
+
+  <rect class="monitor" x="990" y="130" width="220" height="115"/>
+  <text class="box-title" x="1015" y="164">Metric Alerts</text>
+  <text class="box-text" x="1015" y="190">CPU &gt; 10%</text>
+  <text class="box-text" x="1015" y="211">Available Memory &lt; 95%</text>
+  <text class="box-text" x="1015" y="232">Disk consumed &gt; 5%</text>
+
+  <rect class="log" x="990" y="285" width="220" height="120"/>
+  <text class="box-title" x="1015" y="318">Log Alerts</text>
+  <text class="box-text" x="1015" y="344">InsightsMetrics KQL</text>
+  <text class="box-text" x="1015" y="365">Memory Available %</text>
+  <text class="box-text" x="1015" y="386">OS/Data Disk Free %</text>
+
+  <line class="arrow" x1="290" y1="250" x2="350" y2="250"/>
+  <line class="arrow" x1="610" y1="250" x2="695" y2="250"/>
+  <path class="arrow" d="M935 205 C960 205, 965 188, 990 188"/>
+  <path class="arrow dash" d="M935 305 C960 305, 965 345, 990 345"/>
+
+  <rect class="monitor" x="500" y="360" width="270" height="50"/>
+  <text class="box-title" x="525" y="391">Action Group optional</text>
+  <line class="arrow dash" x1="770" y1="385" x2="990" y2="385"/>
+
+  <rect class="lane" x="30" y="470" width="1220" height="295"/>
+  <text class="section-title" x="55" y="502">2. Full AMBA ALZ Pattern</text>
+
+  <rect class="repo" x="60" y="535" width="245" height="135"/>
+  <text class="box-title" x="85" y="568">Example Directory</text>
+  <text class="code" x="85" y="594">examples/amba-alz-avm</text>
+  <text class="box-text" x="85" y="622">Management Group scale</text>
+  <text class="box-text" x="85" y="644">Policy / Initiative pattern</text>
+
+  <rect class="tf" x="365" y="520" width="250" height="165"/>
+  <text class="box-title" x="390" y="553">Official AVM Modules</text>
+  <text class="code" x="390" y="580">Azure/avm-ptn-</text>
+  <text class="code" x="390" y="598">monitoring-amba-alz</text>
+  <text class="code" x="390" y="622">Azure/avm-ptn-alz</text>
+  <text class="box-text" x="390" y="650">ALZ provider library:</text>
+  <text class="code" x="390" y="670">platform/amba</text>
+
+  <rect class="policy" x="685" y="515" width="245" height="175"/>
+  <text class="box-title" x="710" y="548">Management Group</text>
+  <text class="box-text" x="710" y="575">AMBA policy definitions</text>
+  <text class="box-text" x="710" y="597">Policy assignments</text>
+  <text class="box-text" x="710" y="619">DeployIfNotExists alerts</text>
+  <text class="box-text" x="710" y="650">Disable tag support:</text>
+  <text class="code" x="710" y="670">MonitorDisable</text>
+
+  <rect class="monitor" x="1000" y="515" width="210" height="175"/>
+  <text class="box-title" x="1025" y="548">Shared AMBA Resources</text>
+  <text class="box-text" x="1025" y="575">Managed Identity</text>
+  <text class="box-text" x="1025" y="597">Action Group email</text>
+  <text class="box-text" x="1025" y="619">Policy remediation role</text>
+  <text class="box-text" x="1025" y="650">Resource Group:</text>
+  <text class="code" x="1025" y="670">rg-amba-monitoring-001</text>
+
+  <line class="arrow" x1="305" y1="602" x2="365" y2="602"/>
+  <line class="arrow" x1="615" y1="602" x2="685" y2="602"/>
+  <line class="arrow" x1="930" y1="602" x2="1000" y2="602"/>
+
+  <text class="small" x="55" y="795">Note: Platform disk percentage alerts measure IOPS/Bandwidth consumed. Filesystem capacity alerts require AMA/VM Insights and Log Analytics.</text>
+</svg>
