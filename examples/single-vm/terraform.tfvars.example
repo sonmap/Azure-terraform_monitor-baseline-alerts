@@ -4,10 +4,6 @@ alert_resource_group_name = "rg-monitoring"
 vm_name        = "vm-test01"
 vm_resource_id = "/subscriptions/<subscription-id>/resourceGroups/<vm-rg>/providers/Microsoft.Compute/virtualMachines/vm-test01"
 
-cpu_threshold_percent           = 10
-memory_used_threshold_percent   = 5
-disk_consumed_threshold_percent = 5
-
 # Required for Available Memory Bytes platform alert calculation.
 # Example: Standard_D2s_v3 = 8192 MB.
 total_memory_mb = 8192
@@ -17,9 +13,6 @@ action_group_ids = [
   # "/subscriptions/<subscription-id>/resourceGroups/<rg>/providers/Microsoft.Insights/actionGroups/<action-group-name>"
 ]
 
-enable_cpu_metric_alert       = true
-enable_memory_platform_alert  = true
-enable_disk_metric_alerts     = true
 enable_vm_insights_log_alerts = false
 
 # Required only when enable_vm_insights_log_alerts = true.
