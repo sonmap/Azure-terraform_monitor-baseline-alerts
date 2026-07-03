@@ -2,6 +2,15 @@
 
 Terraform conversion/starter repository for Azure Monitor Baseline Alerts (AMBA) style alerting.
 
+## Architecture Diagram
+
+![Azure Terraform Monitor Baseline Alerts Architecture](docs/architecture.svg)
+
+This diagram shows two deployment paths:
+
+- **Single VM baseline alerts**: deploys direct Azure Monitor metric alerts and optional VM Insights log alerts for one VM.
+- **Full AMBA ALZ pattern**: deploys AMBA-style policy definitions, assignments, managed identity, and action group resources at management-group scale through the official Azure Verified Modules.
+
 This repository has two practical layers:
 
 1. **Single VM baseline alerts** using native Terraform resources:
@@ -25,6 +34,8 @@ This repository has two practical layers:
 ├── outputs.tf
 ├── versions.tf
 ├── terraform.tfvars.example
+├── docs/
+│   └── architecture.svg
 ├── modules/
 │   └── vm-baseline-alerts/
 │       ├── main.tf
