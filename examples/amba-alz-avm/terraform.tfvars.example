@@ -1,0 +1,12 @@
+location                     = "koreacentral"
+management_subscription_id   = "<management-subscription-id>"
+root_management_group_name   = "alz"
+resource_group_name          = "rg-amba-monitoring-001"
+user_assigned_managed_identity_name = "id-amba-prod-001"
+
+action_group_email = [
+  "admin@example.com"
+]
+
+amba_disable_tag_name   = "MonitorDisable"
+amba_disable_tag_values = ["true", "Test", "Dev", "Sandbox"]
